@@ -27,7 +27,7 @@ public class Main extends Application {
 
     @Override
     public void stop() throws Exception {
-//        DBHelper.getInstance().close();
+        DBHelper.getInstance().close();
         super.stop();
     }
 

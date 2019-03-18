@@ -1,9 +1,6 @@
 package com.jbrary.model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DBHelper {
     private static DBHelper ourInstance = new DBHelper();
@@ -13,8 +10,8 @@ public class DBHelper {
         try {
             ourInstance.open();
             Statement statement = ourInstance.connection.createStatement();
-//            ourInstance.connection.setAutoCommit(false);
-//            statement.execute(Query.CREATE_BOOK_TABLE);
+            statement.execute(Query.CREATE_BOOK_TABLE);
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -41,5 +38,7 @@ public class DBHelper {
         connection.close();
     }
 
-
+    PreparedStatement prepare(String statement) throws SQLException {
+         return ourInstance.connection.prepareStatement(statement);
+    }
 }
