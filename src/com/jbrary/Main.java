@@ -1,5 +1,6 @@
 package com.jbrary;
 
+import com.jbrary.model.ORM;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +19,17 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    @Override
+    public void init() throws Exception {
+        ORM.getInstance().open();
+        super.init();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        ORM.getInstance().close();
+        super.stop();
+    }
 
     public static void main(String[] args) {
         launch(args);
