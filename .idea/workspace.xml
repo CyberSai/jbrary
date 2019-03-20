@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jbrary.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jbrary/com/jbrary/model/Query.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jbrary/com/jbrary/model/Query.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jbrary/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jbrary/model/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jbrary/model/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jbrary/model/BookDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jbrary/model/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jbrary/model/Query.java" afterDir="false" />
@@ -121,11 +118,11 @@
           <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jbrary/model/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            <state relative-caret-position="153">
+              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
               <folding>
                 <element signature="e#579#580#0" expanded="true" />
                 <element signature="e#604#605#0" expanded="true" />
@@ -155,11 +152,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jbrary/model/BookDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="821">
-              <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+            <state relative-caret-position="155">
+              <caret line="69" column="10" lean-forward="true" selection-start-line="68" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -170,8 +167,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jbrary/model/Query.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="27" column="193" selection-start-line="27" selection-start-column="193" selection-end-line="27" selection-end-column="193" />
+            <state relative-caret-position="240">
+              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -282,9 +279,10 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553100604929" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553106845168" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -415,12 +413,12 @@
       <workItem from="1552930715627" duration="43000" />
       <workItem from="1553004331212" duration="3466000" />
       <workItem from="1553033733463" duration="19000" />
-      <workItem from="1553094693116" duration="5447000" />
+      <workItem from="1553094693116" duration="8961000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26580000" />
+    <option name="totallyTimeSpent" value="30094000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -442,9 +440,10 @@
       <window_info id="Image Layers" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
+      <window_info anchor="bottom" id="Duplicate detector" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -588,18 +587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jbrary/model/Query.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="27" column="193" selection-start-line="27" selection-start-column="193" selection-end-line="27" selection-end-column="193" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jbrary/model/BookDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="821">
-          <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -612,8 +601,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jbrary/model/Book.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="153">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
           <folding>
             <element signature="e#579#580#0" expanded="true" />
             <element signature="e#604#605#0" expanded="true" />
@@ -629,6 +618,16 @@
             <element signature="e#913#914#0" expanded="true" />
             <element signature="e#945#946#0" expanded="true" />
             <element signature="e#976#977#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jbrary/model/BookDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="69" column="10" lean-forward="true" selection-start-line="68" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

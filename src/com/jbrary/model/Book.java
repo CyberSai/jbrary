@@ -19,6 +19,16 @@ public class Book {
         this.quantity = quantity;
     }
 
+    public Book(String author, String title, String publisher, int year, String edition, int quantity) {
+        this.id = 0;
+        this.author = author;
+        this.title = title;
+        this.publisher = publisher;
+        this.year = year;
+        this.edition = edition;
+        this.quantity = quantity;
+    }
+
     public int getId() {
         return id;
     }

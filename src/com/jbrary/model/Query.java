@@ -20,10 +20,16 @@ final class Query {
          static final int QUANTITY_INDEX = 7;
          static final String TABLE = "books";
     }
-    static final String CONNECTION_STRING = "jdbc:sqlite:" + FileSystems.getDefault().getPath("jbrary.sqlite").toAbsolutePath().toString();
+    static final String CONNECTION_STRING = "jdbc:sqlite:" + FileSystems.getDefault()
+            .getPath("jbrary.sqlite").toAbsolutePath().toString();
     static final String CREATE_BOOK_TABLE = "CREATE table IF NOT EXISTS " + Book.TABLE + "( " + Book.ID +
             " INTEGER PRIMARY KEY, " + Book.AUTHOR + " TEXT, " + Book.TITLE + " TEXT, " + Book.PUBLISHER +
             " TEXT, " + Book.YEAR + " INTEGER, " + Book.EDITION + " TEXT, " + Book.QUANTITY + " INTEGER)";
     static final String SELECT_ALL_BOOKS = "SELECT * FROM " + Book.TABLE;
-    static final String INSERT_BOOK = "INSERT INTO " + Book.TABLE + "(" + Book.AUTHOR + ", " + Book.TITLE + ", " + Book.PUBLISHER + ", " + Book.YEAR + ", " + Book.EDITION + ", " + Book.QUANTITY + ") VALUES(?, ?, ?, ?, ?, ?)";
+    static final String INSERT_BOOK = "INSERT INTO " + Book.TABLE + "(" + Book.AUTHOR + ", " + Book.TITLE +
+            ", " + Book.PUBLISHER + ", " + Book.YEAR + ", " + Book.EDITION + ", " + Book.QUANTITY +
+            ") VALUES(?, ?, ?, ?, ?, ?)";
+    static final String UPDATE_BOOK = "UPDATE " + Book.TABLE + " SET " + Book.AUTHOR + " = ?," +
+            Book.TITLE + " = ?," + Book.PUBLISHER + " = ?," + Book.YEAR + " = ?," + Book.EDITION +
+            " = ?," + Book.QUANTITY + " = ? WHERE " + Book.ID + "= ?";
 }
