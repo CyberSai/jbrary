@@ -12,19 +12,7 @@ public class BookDao {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SELECT_ALL_BOOKS)) {
             ResultSet resultSet = statement.executeQuery();
             List<Book> books = new ArrayList<>();
-            while (resultSet.next()) {
-                books.add(
-                        new Book(
-                                resultSet.getInt(Query.Book.ID_INDEX),
-                                resultSet.getString(Query.Book.AUTHOR_INDEX),
-                                resultSet.getString(Query.Book.TITLE_INDEX),
-                                resultSet.getString(Query.Book.PUBLISHER_INDEX),
-                                resultSet.getInt(Query.Book.YEAR_INDEX),
-                                resultSet.getString(Query.Book.EDITION_INDEX),
-                                resultSet.getInt(Query.Book.QUANTITY_INDEX)
-                        )
-                );
-            }
+            sqliteQueryToBook(resultSet, books);
             statement.close();
             return books;
         } catch (SQLException e) {
@@ -35,9 +23,25 @@ public class BookDao {
 
     }
 
+    private static void sqliteQueryToBook(ResultSet resultSet, List<Book> books) throws SQLException {
+        while (resultSet.next()) {
+            books.add(
+                    new Book(
+                            resultSet.getInt(Query.Book.ID_INDEX),
+                            resultSet.getString(Query.Book.AUTHOR_INDEX),
+                            resultSet.getString(Query.Book.TITLE_INDEX),
+                            resultSet.getString(Query.Book.PUBLISHER_INDEX),
+                            resultSet.getInt(Query.Book.YEAR_INDEX),
+                            resultSet.getString(Query.Book.EDITION_INDEX),
+                            resultSet.getInt(Query.Book.QUANTITY_INDEX)
+                    )
+            );
+        }
+    }
+
     public static void insert(Book book){
         try (PreparedStatement statement = DBHelper.getInstance().prepare(Query.INSERT_BOOK)) {
-            book_fill(book, statement);
+            bookToSqliteQuery(book, statement);
             statement.execute();
         } catch (SQLException e) {
             System.out.println("An error occurred while trying add new book");
@@ -45,7 +49,7 @@ public class BookDao {
         }
     }
 
-    private static void book_fill(Book book, PreparedStatement statement) throws SQLException {
+    private static void bookToSqliteQuery(Book book, PreparedStatement statement) throws SQLException {
         statement.setString(1, book.getAuthor());
         statement.setString(2, book.getTitle());
         statement.setString(3, book.getPublisher());
@@ -56,11 +60,12 @@ public class BookDao {
 
     public static void update(Book book) {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.UPDATE_BOOK)) {
-            book_fill(book, statement);
+            bookToSqliteQuery(book, statement);
             statement.setInt(7, book.getId());
             statement.execute();
         } catch (SQLException e) {
             System.out.println("An error occurred while trying update book");
+            e.printStackTrace();
         }
     }
 
@@ -70,14 +75,28 @@ public class BookDao {
             statement.execute();
         } catch (SQLException e) {
             System.out.println("An error occurred while trying update book");
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Book> searchByTitle(String title) {
+        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SEARCH_BOOK)) {
+            List<Book> books = new ArrayList<>();
+            statement.setString(1, "%" + title + "%");
+            ResultSet resultSet =  statement.executeQuery();
+            sqliteQueryToBook(resultSet, books);
+            return books;
+        } catch (SQLException e) {
+            System.out.println("An error occurred while trying search for book");
+            e.printStackTrace();
+            return new ArrayList<Book>();
         }
     }
 
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
-        Book book = new Book(3,"Mavis Mensah", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125);
-        delete(book);
-        List<Book> books = all();
+//        Book book = new Book(3,"Mavis Mensah", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125);
+        List<Book> books = searchByTitle("C");
         books.stream().forEach(b -> System.out.println(b.getId() + ":" + b.getTitle()));
         DBHelper.getInstance().close();
     }
