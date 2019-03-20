@@ -32,4 +32,5 @@ final class Query {
     static final String UPDATE_BOOK = "UPDATE " + Book.TABLE + " SET " + Book.AUTHOR + " = ?," +
             Book.TITLE + " = ?," + Book.PUBLISHER + " = ?," + Book.YEAR + " = ?," + Book.EDITION +
             " = ?," + Book.QUANTITY + " = ? WHERE " + Book.ID + "= ?";
+    static final String DELETE_BOOK = "DELETE FROM " + Book.TABLE + " WHERE " + Book.ID + " = ?";
 }

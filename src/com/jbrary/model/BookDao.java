@@ -64,10 +64,19 @@ public class BookDao {
         }
     }
 
+    public static void delete(Book book) {
+        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.DELETE_BOOK)) {
+            statement.setInt(1, book.getId());
+            statement.execute();
+        } catch (SQLException e) {
+            System.out.println("An error occurred while trying update book");
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
         Book book = new Book(3,"Mavis Mensah", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125);
-        update(book);
+        delete(book);
         List<Book> books = all();
         books.stream().forEach(b -> System.out.println(b.getId() + ":" + b.getTitle()));
         DBHelper.getInstance().close();
