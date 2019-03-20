@@ -33,5 +33,6 @@ final class Query {
             Book.TITLE + " = ?," + Book.PUBLISHER + " = ?," + Book.YEAR + " = ?," + Book.EDITION +
             " = ?," + Book.QUANTITY + " = ? WHERE " + Book.ID + "= ?";
     static final String DELETE_BOOK = "DELETE FROM " + Book.TABLE + " WHERE " + Book.ID + " = ?";
-    static final String SEARCH_BOOK = "SELECT * FROM " + Book.TABLE + " WHERE " + Book.TITLE + " LIKE ?";
+    static final String SEARCH_BOOK_BY_TITLE = "SELECT * FROM " + Book.TABLE + " WHERE " + Book.TITLE + " LIKE ?";
+    static final String SEARCH_BOOK_BY_AUTHOR = "SELECT * FROM " + Book.TABLE + " WHERE " + Book.AUTHOR + " LIKE ?";
 }

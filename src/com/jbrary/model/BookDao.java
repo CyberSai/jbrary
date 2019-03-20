@@ -80,24 +80,38 @@ public class BookDao {
     }
 
     public static List<Book> searchByTitle(String title) {
-        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SEARCH_BOOK)) {
-            List<Book> books = new ArrayList<>();
-            statement.setString(1, "%" + title + "%");
-            ResultSet resultSet =  statement.executeQuery();
-            sqliteQueryToBook(resultSet, books);
-            return books;
+        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SEARCH_BOOK_BY_TITLE)) {
+            return searchHelp(title, statement);
         } catch (SQLException e) {
-            System.out.println("An error occurred while trying search for book");
+            System.out.println("An error occurred while trying search for book by title");
             e.printStackTrace();
             return new ArrayList<Book>();
         }
     }
 
+    public static List<Book> searchByAuthor(String author) {
+        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SEARCH_BOOK_BY_AUTHOR)) {
+            return searchHelp(author, statement);
+        } catch (SQLException e) {
+            System.out.println("An error occurred while trying search for book by author");
+            e.printStackTrace();
+            return new ArrayList<Book>();
+        }
+    }
+
+    private static List<Book> searchHelp(String field, PreparedStatement statement) throws SQLException {
+        List<Book> books = new ArrayList<>();
+        statement.setString(1, "%" + field + "%");
+        ResultSet resultSet =  statement.executeQuery();
+        sqliteQueryToBook(resultSet, books);
+        return books;
+    }
+
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
 //        Book book = new Book(3,"Mavis Mensah", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125);
-        List<Book> books = searchByTitle("C");
-        books.stream().forEach(b -> System.out.println(b.getId() + ":" + b.getTitle()));
+        List<Book> books = searchByAuthor("Isaac");
+        books.stream().forEach(b -> System.out.println(b.getId() + ":" + b.getTitle() + ":" + b.getAuthor()));
         DBHelper.getInstance().close();
     }
 }
