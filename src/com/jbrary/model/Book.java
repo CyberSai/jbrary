@@ -19,7 +19,31 @@ public class Book {
         this.quantity = quantity;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }
