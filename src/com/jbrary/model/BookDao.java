@@ -20,25 +20,6 @@ public class BookDao {
             e.printStackTrace();
             return new ArrayList<>();
         }
-
-    }
-
-    private static void sqliteQueryToBook(ResultSet resultSet, List<Book> books) throws SQLException {
-        while (resultSet.next()) {
-            books.add(
-                    new Book(
-                            resultSet.getInt(Query.Book.ID_INDEX),
-                            resultSet.getString(Query.Book.AUTHOR_INDEX),
-                            resultSet.getString(Query.Book.TITLE_INDEX),
-                            resultSet.getString(Query.Book.PUBLISHER_INDEX),
-                            resultSet.getInt(Query.Book.YEAR_INDEX),
-                            resultSet.getString(Query.Book.EDITION_INDEX),
-                            resultSet.getInt(Query.Book.QUANTITY_INDEX),
-                            resultSet.getString(Query.Book.DESCRIPTION_INDEX),
-                            resultSet.getString(Query.Book.IMAGE_INDEX)
-                    )
-            );
-        }
     }
 
     public static void insert(Book book){
@@ -49,17 +30,6 @@ public class BookDao {
             System.out.println("An error occurred while trying add new book");
             e.printStackTrace();
         }
-    }
-
-    private static void bookToSqliteQuery(Book book, PreparedStatement statement) throws SQLException {
-        statement.setString(1, book.getAuthor());
-        statement.setString(2, book.getTitle());
-        statement.setString(3, book.getPublisher());
-        statement.setInt(4, book.getYear());
-        statement.setString(5, book.getEdition());
-        statement.setInt(6, book.getQuantity());
-        statement.setString(7, book.getDescription());
-        statement.setString(8, book.getImage());
     }
 
     public static void update(Book book) {
@@ -109,6 +79,35 @@ public class BookDao {
         ResultSet resultSet =  statement.executeQuery();
         sqliteQueryToBook(resultSet, books);
         return books;
+    }
+
+    private static void sqliteQueryToBook(ResultSet resultSet, List<Book> books) throws SQLException {
+        while (resultSet.next()) {
+            books.add(
+                    new Book(
+                            resultSet.getInt(Query.Book.ID_INDEX),
+                            resultSet.getString(Query.Book.AUTHOR_INDEX),
+                            resultSet.getString(Query.Book.TITLE_INDEX),
+                            resultSet.getString(Query.Book.PUBLISHER_INDEX),
+                            resultSet.getInt(Query.Book.YEAR_INDEX),
+                            resultSet.getString(Query.Book.EDITION_INDEX),
+                            resultSet.getInt(Query.Book.QUANTITY_INDEX),
+                            resultSet.getString(Query.Book.DESCRIPTION_INDEX),
+                            resultSet.getString(Query.Book.IMAGE_INDEX)
+                    )
+            );
+        }
+    }
+
+    private static void bookToSqliteQuery(Book book, PreparedStatement statement) throws SQLException {
+        statement.setString(1, book.getAuthor());
+        statement.setString(2, book.getTitle());
+        statement.setString(3, book.getPublisher());
+        statement.setInt(4, book.getYear());
+        statement.setString(5, book.getEdition());
+        statement.setInt(6, book.getQuantity());
+        statement.setString(7, book.getDescription());
+        statement.setString(8, book.getImage());
     }
 
     public static void main(String[] args) throws SQLException {
