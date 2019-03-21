@@ -27,7 +27,7 @@ final class Query {
     static final String CONNECTION_STRING = "jdbc:sqlite:" + FileSystems.getDefault()
             .getPath("jbrary.sqlite").toAbsolutePath().toString();
     static final String CREATE_BOOK_TABLE = "CREATE table IF NOT EXISTS " + Book.TABLE + "( " + Book.ID +
-            " INTEGER PRIMARY KEY, " + Book.AUTHOR + " TEXT, " + Book.TITLE + " TEXT, " + Book.PUBLISHER +
+            " INTEGER PRIMARY KEY, " + Book.AUTHOR + " TEXT, " + Book.TITLE + " TEXT NOT NULL, " + Book.PUBLISHER +
             " TEXT, " + Book.YEAR + " INTEGER, " + Book.EDITION + " TEXT, " + Book.QUANTITY + " INTEGER, " +
             Book.DESCRIPTION + " TEXT, " + Book.IMAGE + " TEXT)";
     static final String SELECT_ALL_BOOKS = "SELECT * FROM " + Book.TABLE;
