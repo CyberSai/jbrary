@@ -8,8 +8,10 @@ public class Book {
     private int year;
     private String edition;
     private int quantity;
+    private String description;
+    private String image;
 
-    public Book(int id, String author, String title, String publisher, int year, String edition, int quantity) {
+    public Book(int id, String author, String title, String publisher, int year, String edition, int quantity, String description, String image) {
         this.id = id;
         this.author = author;
         this.title = title;
@@ -17,16 +19,19 @@ public class Book {
         this.year = year;
         this.edition = edition;
         this.quantity = quantity;
+        this.description = description;
+        this.image = image;
     }
 
-    public Book(String author, String title, String publisher, int year, String edition, int quantity) {
-        this.id = 0;
+    public Book(String author, String title, String publisher, int year, String edition, int quantity, String description, String image) {
         this.author = author;
         this.title = title;
         this.publisher = publisher;
         this.year = year;
         this.edition = edition;
         this.quantity = quantity;
+        this.description = description;
+        this.image = image;
     }
 
     public int getId() {
@@ -55,5 +60,13 @@ public class Book {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

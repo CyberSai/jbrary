@@ -18,7 +18,7 @@ public class BookDao {
         } catch (SQLException e) {
             System.out.println("An error occurred while trying to get all books");
             e.printStackTrace();
-            return new ArrayList<Book>();
+            return new ArrayList<>();
         }
 
     }
@@ -33,7 +33,9 @@ public class BookDao {
                             resultSet.getString(Query.Book.PUBLISHER_INDEX),
                             resultSet.getInt(Query.Book.YEAR_INDEX),
                             resultSet.getString(Query.Book.EDITION_INDEX),
-                            resultSet.getInt(Query.Book.QUANTITY_INDEX)
+                            resultSet.getInt(Query.Book.QUANTITY_INDEX),
+                            resultSet.getString(Query.Book.DESCRIPTION_INDEX),
+                            resultSet.getString(Query.Book.IMAGE_INDEX)
                     )
             );
         }
@@ -56,12 +58,14 @@ public class BookDao {
         statement.setInt(4, book.getYear());
         statement.setString(5, book.getEdition());
         statement.setInt(6, book.getQuantity());
+        statement.setString(7, book.getDescription());
+        statement.setString(8, book.getImage());
     }
 
     public static void update(Book book) {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.UPDATE_BOOK)) {
             bookToSqliteQuery(book, statement);
-            statement.setInt(7, book.getId());
+            statement.setInt(9, book.getId());
             statement.execute();
         } catch (SQLException e) {
             System.out.println("An error occurred while trying update book");
@@ -85,7 +89,7 @@ public class BookDao {
         } catch (SQLException e) {
             System.out.println("An error occurred while trying search for book by title");
             e.printStackTrace();
-            return new ArrayList<Book>();
+            return new ArrayList<>();
         }
     }
 
@@ -95,7 +99,7 @@ public class BookDao {
         } catch (SQLException e) {
             System.out.println("An error occurred while trying search for book by author");
             e.printStackTrace();
-            return new ArrayList<Book>();
+            return new ArrayList<>();
         }
     }
 
@@ -109,9 +113,10 @@ public class BookDao {
 
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
-//        Book book = new Book(3,"Mavis Mensah", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125);
+        Book book = new Book(1,"Mavis Mensah Again", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125, "I nice book", "book.jpg");
+//        update(book);
         List<Book> books = searchByAuthor("Isaac");
-        books.stream().forEach(b -> System.out.println(b.getId() + ":" + b.getTitle() + ":" + b.getAuthor()));
+        books.forEach(b -> System.out.println(b.getId() + ":" + b.getTitle() + ":" + b.getAuthor()));
         DBHelper.getInstance().close();
     }
 }
