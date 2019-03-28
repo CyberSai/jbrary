@@ -8,12 +8,11 @@ import java.util.List;
 
 public class BookDao {
 
-    public static List<Book> all(){
+    public static List<Book> all() {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SELECT_ALL_BOOKS)) {
             ResultSet resultSet = statement.executeQuery();
             List<Book> books = new ArrayList<>();
             sqliteQueryToBook(resultSet, books);
-            statement.close();
             return books;
         } catch (SQLException e) {
             System.out.println("An error occurred while trying to get all books");
@@ -22,7 +21,7 @@ public class BookDao {
         }
     }
 
-    public static void insert(Book book){
+    public static void insert(Book book) {
         try (PreparedStatement statement = DBHelper.getInstance().prepare(Query.INSERT_BOOK)) {
             bookToSqliteQuery(book, statement);
             statement.execute();
@@ -48,7 +47,7 @@ public class BookDao {
             statement.setInt(1, book.getId());
             statement.execute();
         } catch (SQLException e) {
-            System.out.println("An error occurred while trying update book");
+            System.out.println("An error occurred while trying delete book");
             e.printStackTrace();
         }
     }

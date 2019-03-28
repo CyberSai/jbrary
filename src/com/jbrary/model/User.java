@@ -1,24 +1,23 @@
 package com.jbrary.model;
 
+import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class User {
+    private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private int id;
-    private String firstName;
-    private String lastName;
-    private String otherNames;
+    private String name;
     private LocalDate dateOfBirth;
     private String gender;
-    private String level;
+    private int level;
     private String program;
     private String residence;
     private String image;
 
-    public User(int id, String firstName, String lastName, String otherNames, LocalDate dateOfBirth, String gender, String level, String program, String residence, String image) {
+    public User(int id, String name, LocalDate dateOfBirth, String gender, int level, String program, String residence, String image) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.otherNames = otherNames;
+        this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.level = level;
@@ -27,10 +26,19 @@ public class User {
         this.image = image;
     }
 
-    public User(String firstName, String lastName, String otherNames, LocalDate dateOfBirth, String gender, String level, String program, String residence, String image) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.otherNames = otherNames;
+    public User(int id, String name, String dateOfBirth, String gender, int level, String program, String residence, String image) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = LocalDate.parse(dateOfBirth, dateTimeFormatter);
+        this.gender = gender;
+        this.level = level;
+        this.program = program;
+        this.residence = residence;
+        this.image = image;
+    }
+
+    public User(String name, LocalDate dateOfBirth, String gender, int level, String program, String residence, String image) {
+        this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.level = level;
@@ -43,27 +51,23 @@ public class User {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getOtherNames() {
-        return otherNames;
+    public String getName() {
+        return name;
     }
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
+    public String getDateOfBirthString() {
+        return dateTimeFormatter.format(dateOfBirth);
+    }
+
     public String getGender() {
         return gender;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
@@ -83,16 +87,8 @@ public class User {
         this.id = id;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setOtherNames(String otherNames) {
-        this.otherNames = otherNames;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
@@ -103,7 +99,7 @@ public class User {
         this.gender = gender;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
