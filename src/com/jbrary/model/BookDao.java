@@ -42,6 +42,28 @@ public class BookDao {
         }
     }
 
+    public static Book find(int id) {
+        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.FIND_BOOK)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            return new Book(
+                    resultSet.getInt(Query.Book.ID_INDEX),
+                    resultSet.getString(Query.Book.AUTHOR_INDEX),
+                    resultSet.getString(Query.Book.TITLE_INDEX),
+                    resultSet.getString(Query.Book.PUBLISHER_INDEX),
+                    resultSet.getInt(Query.Book.YEAR_INDEX),
+                    resultSet.getString(Query.Book.EDITION_INDEX),
+                    resultSet.getInt(Query.Book.QUANTITY_INDEX),
+                    resultSet.getString(Query.Book.DESCRIPTION_INDEX),
+                    resultSet.getString(Query.Book.IMAGE_INDEX)
+            );
+        } catch (SQLException e) {
+            System.out.println("An error occurred while trying find book");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void delete(Book book) {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.DELETE_BOOK)) {
             statement.setInt(1, book.getId());
@@ -121,10 +143,11 @@ public class BookDao {
 
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
-//        Book book = new Book(1,"Mavis Mensah Again", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125, "I nice book", "book.jpg");
+        Book book = find(1);//new Book(1,"Mavis Mensah Again", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125, "I nice book", "book.jpg");
 //        update(book);
-        List<Book> books = searchByYear(2019);
-        books.forEach(b -> System.out.println(b.getId() + ":" + b.getTitle() + ":" + b.getAuthor()));
+        System.out.println(book.getTitle());
+//        List<Book> books = all();
+//        books.forEach(b -> System.out.println(b.getId() + ":" + b.getTitle() + ":" + b.getAuthor()));
         DBHelper.getInstance().close();
     }
 }

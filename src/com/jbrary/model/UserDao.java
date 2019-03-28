@@ -52,6 +52,27 @@ public class UserDao {
         }
     }
 
+    public static User find(int id) {
+        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.FIND_USER)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            return new User(
+                    resultSet.getInt(Query.User.ID_INDEX),
+                    resultSet.getString(Query.User.NAME_INDEX),
+                    resultSet.getString(Query.User.DATE_OF_BIRTH_INDEX),
+                    resultSet.getString(Query.User.GENDER_INDEX),
+                    resultSet.getInt(Query.User.LEVEL_INDEX),
+                    resultSet.getString(Query.User.PROGRAM_INDEX),
+                    resultSet.getString(Query.User.RESIDENCE_INDEX),
+                    resultSet.getString(Query.User.IMAGE_INDEX)
+            );
+        } catch (SQLException e) {
+            System.out.println("An error occurred while trying find book");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static List<User> searchByName(String name) {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SEARCH_USER_BY_NAME)) {
             return searchHelp(name, statement);
@@ -99,10 +120,11 @@ public class UserDao {
 
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
-//        User user = new User(2,"Bernice Hill", LocalDate.now(), "female", 200, "Agricultural Engineering", "Sarbah Hall", "c:/princess");
+        User user =  find(1);//new User(2,"Bernice Hill", LocalDate.now(), "female", 200, "Agricultural Engineering", "Sarbah Hall", "c:/princess");
 //        delete(user);
-        List<User> users = searchByName("amina");
-        users.forEach(u -> System.out.println(u.getId() + ":" + u.getName() + ":" + u.getDateOfBirthString()));
+        System.out.println(user.getName());
+//        List<User> users = all();//searchByName("amina");
+//        users.forEach(u -> System.out.println(u.getId() + ":" + u.getName() + ":" + u.getDateOfBirthString()));
         DBHelper.getInstance().close();
     }
 }
