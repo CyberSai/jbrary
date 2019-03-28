@@ -8,7 +8,7 @@ final class Query {
     static final String CONNECTION_STRING = "jdbc:sqlite:" + FileSystems.getDefault()
             .getPath("jbrary.sqlite").toAbsolutePath().toString();
 
-     class Book {
+    class Book {
          static final String ID = "_id";
          static final String AUTHOR = "author";
          static final String TITLE = "title";
@@ -83,4 +83,28 @@ final class Query {
     static final String DELETE_USER = "DELETE FROM " + User.TABLE + " WHERE " + User.ID + " = ?";
     static final String FIND_USER = "SELECT * FROM " + User.TABLE + " WHERE " + User.ID + " = ?";
     static final String SEARCH_USER_BY_NAME = "SELECT * FROM " + User.TABLE + " WHERE " + User.NAME + " LIKE ?";
+
+    class Order {
+        static final String ID = "_id";
+        static final String USER_ID = "user_id";
+        static final String BOOK_ID = "book_id";
+        static final String ORDER_DATE = "order_date";
+        static final String DUE_DATE = "due_date";
+        static final int ID_INDEX = 1;
+        static final int USER_ID_INDEX = 2;
+        static final int BOOK_ID_INDEX = 3;
+        static final int ORDER_DATE_INDEX = 4;
+        static final int DUE_DATE_INDEX = 5;
+        static final String TABLE = "orders";
+    }
+
+    static final String CREATE_ORDERS_TABLE = "CREATE table IF NOT EXISTS " + Order.TABLE + "( " + Order.ID +
+            " INTEGER PRIMARY KEY, " + Order.USER_ID + " INTEGER, " + Order.BOOK_ID + " INTEGER, " +
+            Order.ORDER_DATE + " TEXT, " + Order.DUE_DATE + " TEXT)";
+    static final String SELECT_ALL_ORDERS = "SELECT * FROM " + Order.TABLE;
+    static final String INSERT_ORDER = "INSERT INTO " + Order.TABLE + "(" + Order.USER_ID + ", " + Order.BOOK_ID +
+            ", " + Order.ORDER_DATE + ", " + Order.DUE_DATE + ") VALUES(?, ?, ?, ?)";
+    static final String UPDATE_ORDER = "UPDATE " + Order.TABLE + " SET " + Order.USER_ID + " = ?," +
+            Order.BOOK_ID + " = ?," + Order.ORDER_DATE + " = ?," + Order.DUE_DATE + " = ? WHERE " + Order.ID + "= ?";
+    static final String DELETE_ORDER = "DELETE FROM " + Order.TABLE + " WHERE " + Order.ID + " = ?";
 }

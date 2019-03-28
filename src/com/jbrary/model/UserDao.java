@@ -67,7 +67,7 @@ public class UserDao {
                     resultSet.getString(Query.User.IMAGE_INDEX)
             );
         } catch (SQLException e) {
-            System.out.println("An error occurred while trying find book");
+            System.out.println("An error occurred while trying find user");
             e.printStackTrace();
         }
         return null;
@@ -120,11 +120,7 @@ public class UserDao {
 
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
-        User user =  find(1);//new User(2,"Bernice Hill", LocalDate.now(), "female", 200, "Agricultural Engineering", "Sarbah Hall", "c:/princess");
-//        delete(user);
-        System.out.println(user.getName());
-//        List<User> users = all();//searchByName("amina");
-//        users.forEach(u -> System.out.println(u.getId() + ":" + u.getName() + ":" + u.getDateOfBirthString()));
+
         DBHelper.getInstance().close();
     }
 }

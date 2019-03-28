@@ -143,11 +143,7 @@ public class BookDao {
 
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
-        Book book = find(1);//new Book(1,"Mavis Mensah Again", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125, "I nice book", "book.jpg");
-//        update(book);
-        System.out.println(book.getTitle());
-//        List<Book> books = all();
-//        books.forEach(b -> System.out.println(b.getId() + ":" + b.getTitle() + ":" + b.getAuthor()));
+
         DBHelper.getInstance().close();
     }
 }
