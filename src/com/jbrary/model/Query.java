@@ -45,6 +45,7 @@ final class Query {
     static final String DELETE_BOOK = "DELETE FROM " + Book.TABLE + " WHERE " + Book.ID + " = ?";
     static final String SEARCH_BOOK_BY_TITLE = "SELECT * FROM " + Book.TABLE + " WHERE " + Book.TITLE + " LIKE ?";
     static final String SEARCH_BOOK_BY_AUTHOR = "SELECT * FROM " + Book.TABLE + " WHERE " + Book.AUTHOR + " LIKE ?";
+    static final String SEARCH_BOOK_BY_YEAR = "SELECT * FROM " + Book.TABLE + " WHERE " + Book.YEAR + " LIKE ?";
 
     class User {
         static final String ID = "_id";

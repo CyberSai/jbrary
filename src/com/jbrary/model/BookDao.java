@@ -72,6 +72,16 @@ public class BookDao {
         }
     }
 
+    public static List<Book> searchByYear(int year) {
+        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SEARCH_BOOK_BY_YEAR)) {
+            return searchHelp(Integer.toString(year), statement);
+        } catch (SQLException e) {
+            System.out.println("An error occurred while trying search for book by author");
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
     private static List<Book> searchHelp(String field, PreparedStatement statement) throws SQLException {
         List<Book> books = new ArrayList<>();
         statement.setString(1, "%" + field + "%");
@@ -111,9 +121,9 @@ public class BookDao {
 
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
-        Book book = new Book(1,"Mavis Mensah Again", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125, "I nice book", "book.jpg");
+//        Book book = new Book(1,"Mavis Mensah Again", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125, "I nice book", "book.jpg");
 //        update(book);
-        List<Book> books = searchByAuthor("Isaac");
+        List<Book> books = searchByYear(2019);
         books.forEach(b -> System.out.println(b.getId() + ":" + b.getTitle() + ":" + b.getAuthor()));
         DBHelper.getInstance().close();
     }
