@@ -8,12 +8,11 @@ import java.util.List;
 
 public class BookDao {
 
-    public static List<Book> all(){
+    public static List<Book> all() {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SELECT_ALL_BOOKS)) {
             ResultSet resultSet = statement.executeQuery();
             List<Book> books = new ArrayList<>();
             sqliteQueryToBook(resultSet, books);
-            statement.close();
             return books;
         } catch (SQLException e) {
             System.out.println("An error occurred while trying to get all books");
@@ -22,7 +21,7 @@ public class BookDao {
         }
     }
 
-    public static void insert(Book book){
+    public static void insert(Book book) {
         try (PreparedStatement statement = DBHelper.getInstance().prepare(Query.INSERT_BOOK)) {
             bookToSqliteQuery(book, statement);
             statement.execute();
@@ -43,12 +42,34 @@ public class BookDao {
         }
     }
 
+    public static Book find(int id) {
+        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.FIND_BOOK)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            return new Book(
+                    resultSet.getInt(Query.Book.ID_INDEX),
+                    resultSet.getString(Query.Book.AUTHOR_INDEX),
+                    resultSet.getString(Query.Book.TITLE_INDEX),
+                    resultSet.getString(Query.Book.PUBLISHER_INDEX),
+                    resultSet.getInt(Query.Book.YEAR_INDEX),
+                    resultSet.getString(Query.Book.EDITION_INDEX),
+                    resultSet.getInt(Query.Book.QUANTITY_INDEX),
+                    resultSet.getString(Query.Book.DESCRIPTION_INDEX),
+                    resultSet.getString(Query.Book.IMAGE_INDEX)
+            );
+        } catch (SQLException e) {
+            System.out.println("An error occurred while trying find book");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void delete(Book book) {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.DELETE_BOOK)) {
             statement.setInt(1, book.getId());
             statement.execute();
         } catch (SQLException e) {
-            System.out.println("An error occurred while trying update book");
+            System.out.println("An error occurred while trying delete book");
             e.printStackTrace();
         }
     }
@@ -66,6 +87,16 @@ public class BookDao {
     public static List<Book> searchByAuthor(String author) {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SEARCH_BOOK_BY_AUTHOR)) {
             return searchHelp(author, statement);
+        } catch (SQLException e) {
+            System.out.println("An error occurred while trying search for book by author");
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public static List<Book> searchByYear(int year) {
+        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SEARCH_BOOK_BY_YEAR)) {
+            return searchHelp(Integer.toString(year), statement);
         } catch (SQLException e) {
             System.out.println("An error occurred while trying search for book by author");
             e.printStackTrace();
@@ -112,10 +143,7 @@ public class BookDao {
 
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
-        Book book = new Book(1,"Mavis Mensah Again", "Intro to C Again", "C++ Girls", 2018, "1st Edition", 125, "I nice book", "book.jpg");
-//        update(book);
-        List<Book> books = searchByAuthor("Isaac");
-        books.forEach(b -> System.out.println(b.getId() + ":" + b.getTitle() + ":" + b.getAuthor()));
+
         DBHelper.getInstance().close();
     }
 }

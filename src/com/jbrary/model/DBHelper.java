@@ -10,7 +10,9 @@ public class DBHelper {
         try {
             ourInstance.open();
             Statement statement = ourInstance.connection.createStatement();
-            statement.execute(Query.CREATE_BOOK_TABLE);
+            statement.execute(Query.CREATE_BOOKS_TABLE);
+            statement.execute(Query.CREATE_USERS_TABLE);
+            statement.execute(Query.CREATE_ORDERS_TABLE);
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
