@@ -1,0 +1,5 @@
+#homePane {
+    -fx-background-image: url("../image/home.png");
+    -fx-background-size: 100%, 100%;
+    -fx-background-repeat: stretch;
+}
