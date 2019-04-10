@@ -28,6 +28,7 @@ public class LoginController {
             Scene scene = new Scene(root, 1000, 650);
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             stage.setScene(scene);
+            stage.show();
         }
     }
 }
