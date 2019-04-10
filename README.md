@@ -1,2 +1,6 @@
 # jbrary
-A library management system built with java
+A library management system built with:
+* **Java**
+* Material Design
+* Sqlite3
+

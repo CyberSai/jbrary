@@ -8,14 +8,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private Scene welcome;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("JBrary");
-        welcome = new Scene(root, 600, 400);
-        primaryStage.setScene(welcome);
+        primaryStage.setResizable(false);
+        Scene scene = new Scene(root, 1000, 650);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
