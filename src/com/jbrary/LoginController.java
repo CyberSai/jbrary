@@ -23,7 +23,7 @@ public class LoginController {
     private JFXButton loginButton;
 
     public void onLoginButtonClicked(ActionEvent e) throws Exception {
-        if (usernameField.getText().equals("JBrary") && passwordField.getText().equals("Let Me Pass")) {
+        if (usernameField.getText().equals("jb") && passwordField.getText().equals("pass")) {
             Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
             Scene scene = new Scene(root, 1000, 650);
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
