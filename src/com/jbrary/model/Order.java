@@ -1,5 +1,7 @@
 package com.jbrary.model;
 
+import com.jbrary.model.User;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -10,28 +12,32 @@ public class Order {
     private Book book;
     private LocalDate orderDate;
     private LocalDate dueDate;
+    private boolean fulfilled;
 
-    public Order(int id, User user, Book book, LocalDate orderDate, LocalDate dueDate) {
+    public Order(int id, User user, Book book, LocalDate orderDate, LocalDate dueDate, boolean fulfilled) {
         this.id = id;
         this.user = user;
         this.book = book;
         this.orderDate = orderDate;
         this.dueDate = dueDate;
+        this.fulfilled = fulfilled;
     }
 
-    public Order(int id, User user, Book book, String orderDate, String dueDate) {
+    public Order(int id, User user, Book book, String orderDate, String dueDate, String fulfilled) {
         this.id = id;
         this.user = user;
         this.book = book;
         this.orderDate = LocalDate.parse(orderDate, dateTimeFormatter);
         this.dueDate = LocalDate.parse(dueDate, dateTimeFormatter);
+        this.fulfilled = Boolean.parseBoolean(fulfilled);
     }
 
-    public Order(User user, Book book, LocalDate orderDate, LocalDate dueDate) {
+    public Order(User user, Book book, LocalDate orderDate, LocalDate dueDate, boolean fulfilled) {
         this.user = user;
         this.book = book;
         this.orderDate = orderDate;
         this.dueDate = dueDate;
+        this.fulfilled = fulfilled;
     }
 
     public int getId() {
@@ -62,6 +68,14 @@ public class Order {
         return dateTimeFormatter.format(dueDate);
     }
 
+    public boolean isFulfilled() {
+        return fulfilled;
+    }
+
+    public String getFullfilled() {
+        return Boolean.toString(fulfilled);
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -80,5 +94,9 @@ public class Order {
 
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public void setFulfilled(boolean fulfilled) {
+        this.fulfilled = fulfilled;
     }
 }
