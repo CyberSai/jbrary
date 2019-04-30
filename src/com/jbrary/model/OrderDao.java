@@ -9,6 +9,7 @@ import com.jbrary.model.Query;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,6 +132,11 @@ public class OrderDao {
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
 
+        Book book = new Book("Isaac", "Book", "Publisher", 2020, "1st Edition", 20, "Test", "test");
+        User user = new User("Sai", LocalDate.now(), "male", 200, "COmputer Eng", "Legon", "image");
+        Order order = new Order(user, book, LocalDate.now(), LocalDate.now().plusDays(5), false);
+        OrderDao.insert(order);
+        OrderDao.update(order);
         DBHelper.getInstance().close();
     }
 }
