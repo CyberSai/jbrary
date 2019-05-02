@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" stylesheets="@../../css/home.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jbrary.ui.home.HomeController">
+   <children>
+      <VBox fx:id="nav" prefHeight="317.0" prefWidth="200.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0">
+         <JFXButton fx:id="issuedBooksTab" maxWidth="1.7976931348623157E308" onAction="#onBooksIssuedTabClicked" prefHeight="47.0" prefWidth="200.0" text="Books Issued" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="100" />
+         <JFXButton fx:id="membersTab" maxWidth="1.7976931348623157E308" onAction="#onMemberTabClicked" prefHeight="49.0" prefWidth="200.0" text="Members" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="100" />
+         <JFXButton fx:id="booksTab" maxWidth="1.7976931348623157E308" onAction="#onBooksTabClicked" prefHeight="47.0" prefWidth="200.0" text="Books" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="100" />
+         <JFXButton fx:id="quit" layoutX="10.0" layoutY="106.0" maxWidth="1.7976931348623157E308" onAction="#onQuitTabClicked" prefHeight="47.0" prefWidth="200.0" text="Quit" />
+      </VBox>
+      <AnchorPane fx:id="contentPane" layoutX="209.0" layoutY="6.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

@@ -1,9 +1,9 @@
 package com.jbrary.model;
 
-import com.jbrary.model.User;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Order {
     private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -13,6 +13,7 @@ public class Order {
     private LocalDate orderDate;
     private LocalDate dueDate;
     private boolean fulfilled;
+    final float FINE_PER_DAY = 1.50f;
 
     public Order(int id, User user, Book book, LocalDate orderDate, LocalDate dueDate, boolean fulfilled) {
         this.id = id;
@@ -98,5 +99,17 @@ public class Order {
 
     public void setFulfilled(boolean fulfilled) {
         this.fulfilled = fulfilled;
+    }
+    public double getFine(){
+        long daysBetween = DAYS.between(dueDate, LocalDate.now());
+        double fine = daysBetween * FINE_PER_DAY;
+        System.out.println(daysBetween);
+        if(fine < 0)
+            return 0;
+
+        else {
+            return fine ;
+        }
+
     }
 }

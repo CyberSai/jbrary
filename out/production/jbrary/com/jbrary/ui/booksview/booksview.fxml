@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" AnchorPane.leftAnchor="10"  AnchorPane.rightAnchor="0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jbrary.ui.booksview.BookViewController">
+   <children>
+       <HBox AnchorPane.rightAnchor="5" AnchorPane.topAnchor="16">
+           <JFXTextField fx:id="search" promptText="Search for Book" />
+           <JFXComboBox fx:id="filter" promptText="Filter Search">
+            <opaqueInsets>
+               <Insets left="10.0" />
+            </opaqueInsets>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin></JFXComboBox>
+           <JFXButton fx:id="refresh" text="Refresh"/>
+           <JFXButton fx:id="addBookButton" mnemonicParsing="false" onAction="#onNewBookButtonClicked" text="Add New Book" AnchorPane.rightAnchor="5" AnchorPane.topAnchor="16" />
+       </HBox>
+
+       <ScrollPane fx:id="scrollPane" stylesheets="@../../css/scrollpane.css" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="50.0">
+           <content>
+       <GridPane fx:id="booksGrid" alignment="TOP_CENTER" prefWidth="148.0">
+         <VBox prefHeight="200.0" prefWidth="100.0" visible="false">
+            <children>
+               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../image/demo_book.jpg" />
+                  </image>
+               </ImageView>
+               <Label text="Things Fall Apart" />
+               <Label text="Chinua Achebe" />
+            </children>
+         </VBox>
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+       </GridPane>
+           </content>
+       </ScrollPane>
+   </children>
+</AnchorPane>

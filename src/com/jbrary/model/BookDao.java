@@ -9,7 +9,7 @@ import java.util.List;
 public class BookDao {
 
     public static List<Book> all() {
-        try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.SELECT_ALL_BOOKS)) {
+        try(PreparedStatement statement = com.jbrary.model.DBHelper.getInstance().prepare(com.jbrary.model.Query.SELECT_ALL_BOOKS)) {
             ResultSet resultSet = statement.executeQuery();
             List<Book> books = new ArrayList<>();
             sqliteQueryToBook(resultSet, books);
@@ -22,7 +22,7 @@ public class BookDao {
     }
 
     public static void insert(Book book) {
-        try (PreparedStatement statement = DBHelper.getInstance().prepare(Query.INSERT_BOOK)) {
+        try (PreparedStatement statement = DBHelper.getInstance().prepare(com.jbrary.model.Query.INSERT_BOOK)) {
             bookToSqliteQuery(book, statement);
             statement.execute();
         } catch (SQLException e) {

@@ -1,5 +1,7 @@
 package com.jbrary.model;
 
+
+
 public class Book {
     private int id;
     private  String author;
@@ -10,6 +12,10 @@ public class Book {
     private int quantity;
     private String description;
     private String image;
+
+    public Book() {
+    }
+
 
     public Book(int id, String author, String title, String publisher, int year, String edition, int quantity, String description, String image) {
         this.id = id;

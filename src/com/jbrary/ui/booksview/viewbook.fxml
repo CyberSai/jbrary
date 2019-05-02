@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" prefHeight="550.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jbrary.ui.booksview.ViewABookController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <padding><Insets bottom="25" left="25" right="25" top="25" /></padding>
+
+          <Label text="Book Title"  style="-fx-font-weight: bold; -fx-font-size: 18"/>
+          <Label fx:id="title" style=" -fx-font-size: 17" maxWidth="1.7976931348623157E308" text="Title Placeholder" />
+         <Label text="Author" style="-fx-font-weight: bold; -fx-font-size: 18"/>
+          <Label fx:id="author"  style=" -fx-font-size: 17" maxWidth="1.7976931348623157E308" text="author" />
+         <Label text="Book Description" style="-fx-font-weight: bold; -fx-font-size: 18" />
+          <Label fx:id="description" wrapText="true" AnchorPane.rightAnchor="0" style=" -fx-font-size: 17" maxWidth="1.7976931348623157E308" text="description" />
+         <Label text="Year Published" style="-fx-font-weight: bold; -fx-font-size: 18"/>
+          <Label fx:id="yearPublished" style=" -fx-font-size: 17" maxWidth="1.7976931348623157E308" text="pub" />
+         <Label text="Publisher" style="-fx-font-weight: bold; -fx-font-size: 18"/>
+
+          <Label fx:id="publisher" style=" -fx-font-size: 17" maxWidth="1.7976931348623157E308" />
+           <ImageView fx:id="imageView">
+
+               <Image url="@../../image/demo_book.jpg" />
+           </ImageView>
+
+
+          <HBox AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" />
+
+
+
+      </VBox>
+
+   </children>
+</AnchorPane>

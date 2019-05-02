@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.jbrary.ui.bookissue.IssueNewBookController">
+    <AnchorPane prefHeight="300.0" prefWidth="400.0">
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="35" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="25" left="25" right="25" top="25"/>
+            </padding>
+
+            <JFXComboBox fx:id="memberComboBox" maxWidth="1.7976931348623157E308" promptText="Select the Member"/>
+            <JFXComboBox fx:id="bookComboBox" maxWidth="1.7976931348623157E308" promptText="Select the book"/>
+
+            <JFXDatePicker fx:id="returnDate" editable="false" maxWidth="1.7976931348623157E308"
+                           promptText="Select the Return Date" AnchorPane.rightAnchor="0"/>
+
+        </VBox>
+
+        <JFXButton onAction="#onIssueBookButtonClicked" prefHeight="56.0" prefWidth="400.0" text="ADD"
+                   AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"/>
+
+    </AnchorPane>
+</StackPane>

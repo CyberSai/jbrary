@@ -1,15 +1,8 @@
 package com.jbrary.model;
 
-import com.jbrary.model.BookDao;
-import com.jbrary.model.DBHelper;
-import com.jbrary.model.Order;
-import com.jbrary.model.UserDao;
-import com.jbrary.model.Query;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +33,10 @@ public class OrderDao {
     public static void update(Order order) {
         try(PreparedStatement statement = DBHelper.getInstance().prepare(Query.UPDATE_ORDER)) {
             orderToSqliteQuery(order, statement);
+
             statement.setInt(6, order.getId());
             statement.execute();
+            System.out.println(statement.toString());
         } catch (SQLException e) {
             System.out.println("An error occurred while trying update order");
             e.printStackTrace();
@@ -132,11 +127,6 @@ public class OrderDao {
     public static void main(String[] args) throws SQLException {
         DBHelper.getInstance().open();
 
-        Book book = new Book("Isaac", "Book", "Publisher", 2020, "1st Edition", 20, "Test", "test");
-        User user = new User("Sai", LocalDate.now(), "male", 200, "COmputer Eng", "Legon", "image");
-        Order order = new Order(user, book, LocalDate.now(), LocalDate.now().plusDays(5), false);
-        OrderDao.insert(order);
-        OrderDao.update(order);
         DBHelper.getInstance().close();
     }
 }

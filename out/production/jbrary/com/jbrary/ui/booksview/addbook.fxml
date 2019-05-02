@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" prefHeight="550.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jbrary.ui.booksview.AddBookController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="35" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <padding><Insets bottom="25" left="25" right="25" top="25" /></padding>
+
+          <JFXTextField fx:id="title" maxWidth="1.7976931348623157E308" promptText="Title" />
+          <JFXTextField fx:id="author" maxWidth="1.7976931348623157E308" promptText="Author" />
+          <JFXTextField fx:id="description" maxWidth="1.7976931348623157E308" promptText="Description" />
+          <JFXTextField fx:id="yearPublished" maxWidth="1.7976931348623157E308" promptText="Year Published" />
+          <JFXTextField fx:id="quantity" maxWidth="1.7976931348623157E308" promptText="Quantity" />
+          <JFXTextField fx:id="publisher" maxWidth="1.7976931348623157E308" promptText="Publisher" />
+
+
+          <HBox AnchorPane.rightAnchor="0">
+              <ImageView fx:id="imageView">
+
+              </ImageView>
+
+              <JFXButton fx:id="chooseCover" onAction="#onChooseCoverPhotoButtonClicked" text="Choose book cover" />
+          </HBox>
+
+
+
+      </VBox>
+       <JFXButton onAction="#onAddBookButtonClicked" prefHeight="56.0" prefWidth="400.0" text="ADD" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" />
+   </children>
+</AnchorPane>
